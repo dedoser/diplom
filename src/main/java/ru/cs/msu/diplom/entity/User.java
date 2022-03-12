@@ -7,15 +7,20 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Long id;
 
-    String name;
+    @Column(name = "full_name")
+    String fullName;
 
-    @OneToMany
+    @OneToMany(mappedBy = "author")
     Set<Task> tasks;
+
+    @OneToMany(mappedBy = "user")
+    Set<Solution> solutions;
 }

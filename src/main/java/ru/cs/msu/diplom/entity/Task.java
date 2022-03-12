@@ -3,6 +3,7 @@ package ru.cs.msu.diplom.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -10,15 +11,23 @@ import javax.persistence.*;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Long id;
 
+    @Column(name = "name")
     String name;
 
-    String fileName;
+    @Column(name = "task_file_loc")
+    String taskFileLoc;
 
-    String image;
+    @Column(name = "images_loc")
+    String imagesLoc;
 
-    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    @ManyToOne
     User author;
+
+    @OneToMany(mappedBy = "task")
+    Set<Solution> solutions;
 }
