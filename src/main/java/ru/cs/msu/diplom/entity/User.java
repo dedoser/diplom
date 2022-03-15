@@ -18,7 +18,7 @@ public class User {
     @Column(name = "full_name")
     String fullName;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     Set<Task> tasks;
 
     @OneToMany(mappedBy = "user")

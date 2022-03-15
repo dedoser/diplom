@@ -1,0 +1,21 @@
+<div class="detail-section">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <img src="assets/images/logo.png" class="product-box detail-img">
+      <h3>{{task?.name}}</h3>
+
+      <hr>
+      <h4>Description</h4>
+      <p>{{task?.description}}</p>
+
+      <input type="file" class="file-input" (change)="onFileUpload($event)" #fileUpload>
+
+      <button mat-mini-fab color="primary" class="upload-btn"
+              (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+
+      <a routerLink="/tasks" >Back to tasks</a>
+    </div>
+  </div>
+</div>

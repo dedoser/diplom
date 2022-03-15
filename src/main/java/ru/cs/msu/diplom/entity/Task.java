@@ -24,9 +24,12 @@ public class Task {
     @Column(name = "images_loc")
     String imagesLoc;
 
-    @JoinColumn(name = "user_id")
+    @Column(name = "description")
+    String description;
+
+    @JoinColumn(name = "user_id", nullable = false)
     @ManyToOne
-    User author;
+    User user;
 
     @OneToMany(mappedBy = "task")
     Set<Solution> solutions;

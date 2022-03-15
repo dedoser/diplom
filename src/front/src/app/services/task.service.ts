@@ -6,23 +6,29 @@ import {Task} from 'src/app/common/task'
 @Injectable({
   providedIn: 'root'
 })
-export class TaskServiceService {
+export class TaskService {
 
-  private baseUrl = 'http://localhost:8080/tasks'
+  private baseUrl = 'http://localhost:8080/task'
 
   constructor(private httpClient: HttpClient) { }
 
   getTaskList(): Observable<Task[]> {
     return this.httpClient.get<getResponseTask>(this.baseUrl).pipe(
-      map(response => response._embedded.tasks)
+      map(response => {
+        console.log(response._embedded.task)
+        return response._embedded.task;
+      })
     );
   }
 
-
+  getTask(id: number): Observable<Task> {
+    const searchUrl = `${this.baseUrl}/${id}`;
+    return this.httpClient.get<Task>(searchUrl);
+  }
 }
 
 interface getResponseTask {
   _embedded: {
-    tasks: Task[];
+    task: Task[];
   }
 }

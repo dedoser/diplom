@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TaskServiceService } from './task-service.service';
+import { FileUploadService } from './file-upload.service';
 
-describe('TaskServiceService', () => {
-  let service: TaskServiceService;
+describe('FileUploadService', () => {
+  let service: FileUploadService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TaskServiceService);
+    service = TestBed.inject(FileUploadService);
   });
 
   it('should be created', () => {

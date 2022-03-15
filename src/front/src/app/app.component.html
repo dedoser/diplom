@@ -3,13 +3,26 @@
   <!-- MENU SIDEBAR-->
   <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-      <a routerLink="/products">
-        <img src="assets/images/logo.png" alt="luv2shop" class="img-responsive">
+      <a href="#">
+        <img src="assets/images/logo.png" alt="cmcMsu" class="img-responsive">
       </a>
     </div>
 
     <!-- MENU -->
-    <app-task-list></app-task-list>
+    <div class="menu-sidebar-content js-scrollbar1">
+      <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar-list">
+          <li>
+            <a routerLink="/users" routerLinkActive="active-link">
+              Users
+            </a>
+          </li>
+          <li routerLink="/tasks" routerLinkActive="active-link">
+            Tasks
+          </li>
+        </ul>
+      </nav>
+    </div>
 
   </aside>
   <!-- END MENU SIDEBAR -->
@@ -40,7 +53,7 @@
 </div>
 
 <!-- ENDS PAGE CONTAINER -->
-<footer>
+<footer class="footer-bottom">
   <ul>
     <li><a href="#">About Us</a></li>
     <li><a href="#">Contact Us</a></li>

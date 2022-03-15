@@ -1,5 +1,7 @@
 export class Task {
+  id: string;
   name: string;
-  taskFileUrl: string;
+  taskFileLoc: string;
   imagesLoc: string;
+  description: string;
 }
