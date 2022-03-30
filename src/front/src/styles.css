@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
 /*
  * ----------------------------
  * Common CSS
@@ -10,6 +12,26 @@
   -webkit-box-sizing:border-box;
   -moz-box-sizing:border-box;
   box-sizing:border-box
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#white {
+  color: white;
+}
+
+.button {
+  background-color: #177af3; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 body{

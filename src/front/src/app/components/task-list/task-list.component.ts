@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskService} from "../../services/task.service";
+import {TaskService} from "../../services/task/task.service";
 import {Task} from "../../common/task";
 import {ActivatedRoute, Route} from "@angular/router";
 
@@ -30,5 +30,9 @@ export class TaskListComponent implements OnInit {
         this.tasks = data;
       }
     )
+  }
+
+  createTask() {
+
   }
 }

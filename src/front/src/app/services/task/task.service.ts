@@ -15,7 +15,6 @@ export class TaskService {
   getTaskList(): Observable<Task[]> {
     return this.httpClient.get<getResponseTask>(this.baseUrl).pipe(
       map(response => {
-        console.log(response._embedded.task)
         return response._embedded.task;
       })
     );

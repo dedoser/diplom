@@ -1,0 +1,57 @@
+<div class="main-content page-m">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+
+      <form [formGroup]="taskFormGroup" (ngSubmit)="onSubmit()">
+        <div formGroupName="task" class="form-area">
+          <h3>Task Details</h3>
+
+          <div class="row">
+            <div class="col-md-2"> <label>Name</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="name" type="text">
+                <div *ngIf="name.touched && name.invalid" class="alert alert-danger mt-1">
+                  <div *ngIf="name.errors?.['required']">Name is required.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"> <label>Description</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="description" type="text">
+                <div *ngIf="description.touched && description.invalid" class="alert alert-danger mt-1">
+                  <div *ngIf="description.errors?.['required']">Description is required.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"> <label>Simulink Model</label></div>
+            <div class="col-8">
+              <label class="button">
+                <input type="file" (change)="selectFile($event)" />
+                Choose a file
+              </label>
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <div class="text-center">
+          <a routerLink="/tasks">
+            <button type="submit" (click)="onSubmit()" class="button" [disabled]="!taskFormGroup.valid">Create</button>
+          </a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

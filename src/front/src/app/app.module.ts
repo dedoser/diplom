@@ -3,17 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import {RouterModule, Routes} from "@angular/router";
-import { UserListComponent } from './components/user-list/user-list.component';
 import { TaskComponent } from './components/task/task.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from "@angular/material/icon";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { TaskFormComponent } from './components/task-form/task-form.component';
 
 const router: Routes = [
+  {path: "task-create", component: TaskFormComponent},
   {path: "tasks", component: TaskListComponent},
-  {path: "users", component: UserListComponent},
   {path: "task/:id", component: TaskComponent},
   {path: "**", redirectTo:"/tasks", pathMatch: "full"}
 ];
@@ -21,17 +19,16 @@ const router: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    CheckoutComponent,
     TaskListComponent,
-    UserListComponent,
     TaskComponent,
+    TaskFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(router),
-    MatButtonModule,
-    MatIconModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
