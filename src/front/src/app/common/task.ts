@@ -4,4 +4,6 @@ export class Task {
   taskFileLoc: string;
   imagesLoc: string;
   description: string;
+  inputBlock: string;
+  outputBlock: string;
 }

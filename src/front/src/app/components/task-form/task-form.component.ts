@@ -25,6 +25,8 @@ export class TaskFormComponent implements OnInit {
       task: this.formBuilder.group({
         name: new FormControl('', [Validators.required]),
         description: new FormControl('', [Validators.required]),
+        inputBlock: new FormControl('', [Validators.required]),
+        outputBlock: new FormControl('', [Validators.required]),
         file: ['']
       })
     });
@@ -40,6 +42,14 @@ export class TaskFormComponent implements OnInit {
 
   get file() {
     return this.taskFormGroup.get('task.file');
+  }
+
+  get inputBlock() {
+    return this.taskFormGroup.get('task.inputBlock');
+  }
+
+  get outputBlock() {
+    return this.taskFormGroup.get('task.outputBlock');
   }
 
   onFileChanged() {
@@ -59,7 +69,13 @@ export class TaskFormComponent implements OnInit {
     console.log("start saving task");
     this.onFileChanged();
     console.log(this.currentFile);
-    this.taskUploadService.createTask(this.name.value, this.description.value, this.currentFile).subscribe({
+    this.taskUploadService.createTask(
+      this.name.value,
+      this.description.value,
+      this.inputBlock.value,
+      this.outputBlock.value,
+      this.currentFile
+    ).subscribe({
       next: (event: any) => {
         if (event instanceof HttpResponse) {
           this.message = event.body.message;

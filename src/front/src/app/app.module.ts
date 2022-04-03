@@ -8,11 +8,13 @@ import {RouterModule, Routes} from "@angular/router";
 import { TaskComponent } from './components/task/task.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { SolutionsComponent } from './components/solutions/solutions.component';
 
 const router: Routes = [
   {path: "task-create", component: TaskFormComponent},
   {path: "tasks", component: TaskListComponent},
   {path: "task/:id", component: TaskComponent},
+  {path: "task/:taskId/solution/:solutionId", component: SolutionsComponent},
   {path: "**", redirectTo:"/tasks", pathMatch: "full"}
 ];
 
@@ -21,7 +23,8 @@ const router: Routes = [
     AppComponent,
     TaskListComponent,
     TaskComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    SolutionsComponent
   ],
   imports: [
     BrowserModule,

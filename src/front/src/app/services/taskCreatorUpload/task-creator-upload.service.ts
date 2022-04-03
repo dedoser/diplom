@@ -11,10 +11,12 @@ export class TaskCreatorUploadService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createTask(name: string, description: string, file: File): Observable<HttpEvent<any>> {
+  createTask(name: string, description: string, inputBLock: string, outputBlock: string, file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('name', name);
     formData.append('description', description);
+    formData.append('inputBlock', inputBLock);
+    formData.append('outputBlock', outputBlock);
     formData.append('file', file);
     console.log(formData.get('file'));
     const req = new HttpRequest('POST', `${this.baseUrl}/uploadTask`, formData, {

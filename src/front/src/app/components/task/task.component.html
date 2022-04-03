@@ -1,7 +1,7 @@
 <div class="detail-section">
   <div class="section-content section-content-p30">
     <div class="container-fluid">
-      <img src="assets/images/logo.png" class="product-box detail-img">
+      <img src="{{task?.imagesLoc}}" class="product-box detail-img">
       <h3>{{task?.name}}</h3>
 
       <hr>
@@ -9,37 +9,44 @@
       <p>{{task?.description}}</p>
 
       <div class="row">
-        <div class="col-8">
-          <label class="button">
-            <input type="file" (change)="selectFile($event)" />
-            Choose a file
-          </label>
-        </div>
-        <div class="col-6">
-          <button class ="button" [disabled]="!selectedFiles" (click)="upload()">
-            Upload
-          </button>
-        </div>
-      </div>
-      <div *ngIf="currentFile" class="progress my-3">
-        <div
-          class="progress-bar progress-bar-info progress-bar-striped"
-          role="progressbar"
-          attr.aria-valuenow="{{ progress }}"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          [ngStyle]="{ width: progress + '%' }"
-        >
-          {{ progress }}%
+<!--        <div class="col-8">-->
+<!--          <label class="button">-->
+<!--            <input type="file" (change)="selectFile($event)" />-->
+<!--            Choose a file-->
+<!--          </label>-->
+<!--        </div>-->
+        <div class="row">
+          <div class="col-8">
+            <label class="button">
+              <input type="file" (change)="selectFile($event)" />
+              Choose a file
+            </label>
+          </div>
         </div>
       </div>
-      <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
 
       <div class="col-6">
-        <button class="button" (click)="uploadSolution()" >Solve the task</button>
+        <button class="button" (click)="upload()" >Solve the task</button>
       </div>
       <div class="sol-8">
         <a routerLink="/tasks" >Back to tasks</a>
+      </div>
+      <hr/>
+      <h2>Solutions</h2>
+      <div class="row">
+        <!-- loop over the collection of solutions -->
+        <div class="product-box">
+
+          <div *ngFor="let tempSolution of solutions">
+
+            <a routerLink="/tasks/{{taskId}}/solution/{{tempSolution.id}}" routerLinkActive="active-link">
+              <h4>Solution_{{tempSolution.id}}</h4>
+            </a>
+          </div>
+        </div>
+        <div *ngIf="solutions?.length == 0" class="alert alert-warning col-md-12" role="alert">
+          No solutions found.
+        </div>
       </div>
     </div>
   </div>

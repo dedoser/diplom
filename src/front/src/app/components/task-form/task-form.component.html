@@ -31,6 +31,30 @@
           </div>
 
           <div class="row">
+            <div class="col-md-2"> <label>Input block</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="inputBlock" type="text">
+                <div *ngIf="description.touched && description.invalid" class="alert alert-danger mt-1">
+                  <div *ngIf="description.errors?.['required']">Description is required.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"> <label>Output block</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="outputBlock" type="text">
+                <div *ngIf="description.touched && description.invalid" class="alert alert-danger mt-1">
+                  <div *ngIf="description.errors?.['required']">Description is required.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
             <div class="col-md-2"> <label>Simulink Model</label></div>
             <div class="col-8">
               <label class="button">
@@ -39,8 +63,6 @@
               </label>
             </div>
           </div>
-
-
 
         </div>
 

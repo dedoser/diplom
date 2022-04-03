@@ -4,6 +4,8 @@ import {TaskService} from "../../services/task/task.service";
 import {ActivatedRoute} from "@angular/router";
 import {FileUploadService} from "../../services/file-upload/file-upload.service";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {Solution} from "../../common/solution";
+import {SolutionService} from "../../services/solution/solution.service";
 
 @Component({
   selector: 'app-task',
@@ -13,6 +15,8 @@ import {HttpEventType, HttpResponse} from "@angular/common/http";
 export class TaskComponent implements OnInit {
 
   task: Task;
+  taskId: number;
+  solutions: Solution[] = [];
 
   selectedFiles?: FileList;
   currentFile?: File;
@@ -20,13 +24,16 @@ export class TaskComponent implements OnInit {
   message = '';
 
   constructor(private taskService: TaskService,
+              private solutionService: SolutionService,
               private route: ActivatedRoute,
               private uploadService: FileUploadService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       () => {
+        this.initTaskId();
         this.handleTaskDetails();
+        this.handleSolutionList();
         // this.uploadService.setIds(this.task.id)
       }
     )
@@ -36,11 +43,19 @@ export class TaskComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  handleTaskDetails() {
-    const taskId: number = +this.route.snapshot.paramMap.get("id")!;
+  initTaskId() {
+    this.taskId = +this.route.snapshot.paramMap.get("id")!;
+  }
 
-    this.taskService.getTask(taskId).subscribe(
+  handleTaskDetails() {
+    this.taskService.getTask(this.taskId).subscribe(
       data => this.task = data
+    );
+  }
+
+  handleSolutionList() {
+    this.solutionService.getSolutionList(this.taskId).subscribe(
+      data => this.solutions = data
     );
   }
 
@@ -71,10 +86,8 @@ export class TaskComponent implements OnInit {
         });
       }
       this.selectedFiles = undefined;
+
     }
-  }
-
-  uploadSolution() {
-
+    window.location.reload();
   }
 }
