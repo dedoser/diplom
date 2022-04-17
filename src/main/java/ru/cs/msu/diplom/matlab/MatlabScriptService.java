@@ -1,4 +1,6 @@
-package ru.cs.msu.diplom.service;
+package ru.cs.msu.diplom.matlab;
+
+import ru.cs.msu.diplom.matlab.constants.TypeOfScripts;
 
 import java.util.Map;
 
@@ -13,16 +15,10 @@ public interface MatlabScriptService {
     void init();
 
     /**
-     * Метод для генерации скрипта для генерации изображения системы
+     * Метод для генерации скрипта
      * @param params параметры, которые используется для подстановки необходимых параметров
+     * @param type какой тип скрипта будет генерироваться
      * @return сгенерированный скрипт в виде строки
      */
-    String generateCreateImageScript(Map<String, String> params);
-
-    /**
-     * Метод для генерации скрипта для замены блока на необходимую подсистему
-     * @param params параметры, которые используется для подстановки необходимых параметров
-     * @return сгенерированный скрипт в виде строки
-     */
-    String generateReplaceSystemScript(Map<String, String> params);
+    String generateScript(Map<String, String> params, TypeOfScripts type);
 }

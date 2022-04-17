@@ -1,9 +1,10 @@
-package ru.cs.msu.diplom.service;
+package ru.cs.msu.diplom.service.impl;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
+import ru.cs.msu.diplom.service.FileStorageService;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

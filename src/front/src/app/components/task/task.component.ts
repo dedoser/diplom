@@ -49,7 +49,11 @@ export class TaskComponent implements OnInit {
 
   handleTaskDetails() {
     this.taskService.getTask(this.taskId).subscribe(
-      data => this.task = data
+      data => {
+        this.task = data
+        let start = this.task.imagesLoc.indexOf('assets');
+        this.task.imagesLoc = this.task.imagesLoc.substring(start);
+      }
     );
   }
 

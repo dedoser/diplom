@@ -1,12 +1,16 @@
 package ru.cs.msu.diplom.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "solution")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Solution {
 
     @Id
@@ -15,14 +19,20 @@ public class Solution {
     Long id;
 
     @Column(name = "sol_file_loc")
-    String solFieLoc;
+    String solFileLoc;
 
-    @Column(name = "sol_images_loc")
-    String solImagesLoc;
+    @Column(name = "image_plot")
+    String imagePlot;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
+    @Column(name = "image_system")
+    String imageSystem;
+
+    @Column(name = "log_file")
+    String logFile;
+
+    @OneToOne
+    @JoinColumn(name = "quality_id", referencedColumnName = "id")
+    Quality quality;
 
     @ManyToOne
     @JoinColumn(name = "task_id")

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {SolutionService} from "../../services/solution/solution.service";
 import {Solution} from "../../common/solution";
 import {ActivatedRoute} from "@angular/router";
+import {QualityService} from "../../services/quality/quality.service";
+import {Quality} from "../../common/quality";
 
 @Component({
   selector: 'app-solutions',
@@ -11,17 +13,20 @@ import {ActivatedRoute} from "@angular/router";
 export class SolutionsComponent implements OnInit {
 
   solution: Solution;
+  quality: Quality;
   solutionId: number;
   taskId: number;
 
   constructor(private solutionService: SolutionService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private qualityService: QualityService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       () => {
         console.log("Get solution info");
         this.initIds();
+        this.handleSolutionDetails()
       }
     )
   }
@@ -33,7 +38,16 @@ export class SolutionsComponent implements OnInit {
 
   handleSolutionDetails() {
     this.solutionService.getSolution(this.solutionId).subscribe(
-      data => this.solution = data
+      data => {
+        this.solution = data;
+        let start = this.solution.imageSystem.indexOf('assets');
+        this.solution.imageSystem = this.solution.imageSystem.substring(start);
+        this.solution.imagePlot = this.solution.imagePlot.substring(start);
+      }
+    )
+    this.qualityService.getQuality(this.solutionId).subscribe(
+      data =>
+        this.quality = data
     )
   }
 }

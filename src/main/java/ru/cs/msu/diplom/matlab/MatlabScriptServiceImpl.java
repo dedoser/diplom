@@ -1,30 +1,37 @@
-package ru.cs.msu.diplom.service.impl;
+package ru.cs.msu.diplom.matlab;
 
-import lombok.RequiredArgsConstructor;
-import ru.cs.msu.diplom.service.MatlabScriptService;
+import org.apache.commons.io.FileUtils;
+import ru.cs.msu.diplom.matlab.constants.TypeOfScripts;
 
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-@RequiredArgsConstructor
 public class MatlabScriptServiceImpl implements MatlabScriptService {
 
-    private final List<String> scriptFiles = {"", ""};
-    private Map<String, String> scripts = new HashMap<>();
+    private Map<TypeOfScripts, String> scripts = new HashMap<>();
 
     @Override
     public void init() {
-
+        Arrays.asList(TypeOfScripts.values()).forEach(type -> {
+            try {
+                File file = new File(this.getClass().getClassLoader().getResource(type.getFileName()).getFile());
+                String script = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+                scripts.put(type, script.replaceAll("\n", ""));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override
-    public String generateCreateImageScript(Map<String, String> params) {
-        return null;
-    }
-
-    @Override
-    public String generateReplaceSystemScript(Map<String, String> params) {
-        return null;
+    public String generateScript(Map<String, String> params, TypeOfScripts type) {
+        String script = scripts.get(type);
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            script = script.replaceAll(entry.getKey(), entry.getValue());
+        }
+        return script;
     }
 }

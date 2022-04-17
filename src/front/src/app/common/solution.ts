@@ -1,5 +1,6 @@
 export class Solution {
   id: string;
   solFileLoc: string;
-  solImagesLoc: string;
+  imagePlot: string;
+  imageSystem: string;
 }

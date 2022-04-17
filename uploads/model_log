@@ -1,0 +1,9 @@
+        RiseTime: 1.1258
+    SettlingTime: 99.5832
+     SettlingMin: -1.4139
+     SettlingMax: 1.4135
+       Overshoot: 3.3121
+      Undershoot: 110.4995
+            Peak: 1.5123
+        PeakTime: 2.2738
+

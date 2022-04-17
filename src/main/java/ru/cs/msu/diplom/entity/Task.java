@@ -1,12 +1,17 @@
 package ru.cs.msu.diplom.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name="task")
 public class Task {
 
@@ -27,10 +32,17 @@ public class Task {
     @Column(name = "description")
     String description;
 
-    @JoinColumn(name = "user_id", nullable = false)
-    @ManyToOne
-    User user;
+    @Column(name = "input_block")
+    String inputBlock;
+
+    @Column(name = "output_block")
+    String outputBlock;
 
     @OneToMany(mappedBy = "task")
-    Set<Solution> solutions;
+    Set<Solution> solutions = new HashSet<>();
+
+    public void addSolution(Solution solution) {
+        solution.setTask(this);
+        solutions.add(solution);
+    }
 }

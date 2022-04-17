@@ -1,7 +1,24 @@
 <div class="main-content">
   <div class="section-content section-content-p30">
     <div class="container-fluid">
+      <img src="{{solution?.imageSystem}}" class="img" width="800px">
+      <hr>
+      <img src="{{solution?.imagePlot}}" class="img" width="800px">
+      <h3>Quality</h3>
+      <ul>
+        <li>RiseTime: {{quality.riseTime}}</li>
+        <li>SettlingTime: {{quality.settlingTime}}</li>
+        <li>SettlingMin: {{quality.settlingMin}}</li>
+        <li>SettlingMax: {{quality.settlingMax}}</li>
+        <li>Overshoot: {{quality.overshoot}}</li>
+        <li>Undershoot: {{quality.undershoot}}</li>
+        <li>Peak: {{quality.peak}}</li>
+        <li>PeakTime: {{quality.peakTime}}</li>
+      </ul>
 
+      <div class="sol-8">
+        <a routerLink="/task/{{taskId}}" >Back to task</a>
+      </div>
     </div>
   </div>
 </div>
