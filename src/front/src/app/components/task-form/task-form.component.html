@@ -66,6 +66,75 @@
 
         </div>
 
+        <div formGroupName="params" class="form-area">
+          <h3>Quality Params</h3>
+
+          <div class="row">
+            <div class="col-md-2"> <label>Rise Time</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="riseTime" type="text" placeholder="[minValue; maxValue] or empty">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"> <label>Settling Time</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="settlingTime" type="text" placeholder="[minValue; maxValue] or empty">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"> <label>Settling Min</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="settlingMin" type="text" placeholder="[minValue; maxValue] or empty">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"> <label>Settling Max</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="settlingMax" type="text" placeholder="[minValue; maxValue] or empty">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"> <label>Overshoot</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="overshoot" type="text" placeholder="[minValue; maxValue] or empty">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"> <label>Undershoot</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="undershoot" type="text" placeholder="[minValue; maxValue] or empty">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"> <label>Peak</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="Peak" type="text" placeholder="[minValue; maxValue] or empty">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"> <label>Peak Time</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="peakTime" type="text" placeholder="[minValue; maxValue] or empty">
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="text-center">
           <a routerLink="/tasks">
             <button type="submit" (click)="onSubmit()" class="button" [disabled]="!taskFormGroup.valid">Create</button>

@@ -38,6 +38,30 @@ public class Task {
     @Column(name = "output_block")
     String outputBlock;
 
+    @Column(name = "rise_time")
+    String riseTime;
+
+    @Column(name = "settling_time")
+    String settlingTime;
+
+    @Column(name = "settling_min")
+    String settlingMin;
+
+    @Column(name = "settling_max")
+    String settlingMax;
+
+    @Column(name = "overshoot")
+    String overshoot;
+
+    @Column(name = "undershoot")
+    String undershoot;
+
+    @Column(name = "peak")
+    String peak;
+
+    @Column(name = "peak_time")
+    String peakTime;
+
     @OneToMany(mappedBy = "task")
     Set<Solution> solutions = new HashSet<>();
 

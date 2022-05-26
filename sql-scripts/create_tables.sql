@@ -19,6 +19,14 @@ CREATE TABLE IF NOT EXISTS `diplom`.`task`
     images_loc    varchar(255) default null,
     input_block   varchar(255) not null,
     output_block  varchar(255) not null,
+    rise_time      varchar(255) not null,
+    settling_time  varchar(255) not null,
+    settling_max   varchar(255) not null,
+    settling_min   varchar(255) not null,
+    overshoot     varchar(255) not null,
+    undershoot    varchar(255) not null,
+    peak          varchar(255) not null,
+    peak_time      varchar(255) not null,
     primary key (`id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1;

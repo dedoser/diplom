@@ -6,15 +6,51 @@
       <img src="{{solution?.imagePlot}}" class="img" width="800px">
       <h3>Quality</h3>
       <ul>
-        <li>RiseTime: {{quality.riseTime}}</li>
-        <li>SettlingTime: {{quality.settlingTime}}</li>
-        <li>SettlingMin: {{quality.settlingMin}}</li>
-        <li>SettlingMax: {{quality.settlingMax}}</li>
-        <li>Overshoot: {{quality.overshoot}}</li>
-        <li>Undershoot: {{quality.undershoot}}</li>
-        <li>Peak: {{quality.peak}}</li>
-        <li>PeakTime: {{quality.peakTime}}</li>
+        <li>
+          RiseTime: {{quality?.riseTime}}
+          <ng-container *ngIf="isValidRiseTime(); then OK; else FAIL"></ng-container>
+        </li>
+        <li>
+          SettlingTime: {{quality?.settlingTime}}
+          <ng-container *ngIf="isValidSettlingTime(); then OK; else FAIL"></ng-container>
+        </li>
+        <li>
+          SettlingMin: {{quality?.settlingMin}}
+          <ng-container *ngIf="isValidSettlingMin(); then OK; else FAIL"></ng-container>
+        </li>
+        <li>
+          SettlingMax: {{quality?.settlingMax}}
+          <ng-container *ngIf="isValidSettlingMax(); then OK; else FAIL"></ng-container>
+        </li>
+        <li>
+          Overshoot: {{quality?.overshoot}}
+          <ng-container *ngIf="isValidOvershoot(); then OK; else FAIL"></ng-container>
+        </li>
+        <li>
+          Undershoot: {{quality?.undershoot}}
+          <ng-container *ngIf="isValidUndershoot(); then OK; else FAIL"></ng-container>
+        </li>
+        <li>
+          Peak: {{quality?.peak}}
+          <ng-container *ngIf="isValidPeak(); then OK; else FAIL"></ng-container>
+        </li>
+        <li>
+          PeakTime: {{quality?.peakTime}}
+          <ng-container *ngIf="isValidPeakTime(); then OK; else FAIL"></ng-container>
+        </li>
       </ul>
+
+      <ng-template #OK>
+        <span class="okAnswer">
+          OK
+        </span>
+      </ng-template>
+
+      <ng-template #FAIL>
+        <span class="failAnswer">
+          FAIL
+        </span>
+      </ng-template>
 
       <div class="sol-8">
         <a routerLink="/task/{{taskId}}" >Back to task</a>

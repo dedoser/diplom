@@ -34,6 +34,16 @@ input[type="file"] {
   font-size: 16px;
 }
 
+.okAnswer {
+  color: green;
+  font-weight: bold;
+}
+
+.failAnswer {
+  color: red;
+  font-weight: bold;
+}
+
 body{
   font-family:Poppins,sans-serif;
   font-weight:400;

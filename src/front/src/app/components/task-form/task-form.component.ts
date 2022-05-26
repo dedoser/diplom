@@ -28,6 +28,16 @@ export class TaskFormComponent implements OnInit {
         inputBlock: new FormControl('', [Validators.required]),
         outputBlock: new FormControl('', [Validators.required]),
         file: ['']
+      }),
+      params: this.formBuilder.group({
+        riseTime: '',
+        settlingTime: '',
+        settlingMax: '',
+        settlingMin: '',
+        overshoot: '',
+        undershoot: '',
+        peak: '',
+        peakTime: ''
       })
     });
   }
@@ -52,6 +62,38 @@ export class TaskFormComponent implements OnInit {
     return this.taskFormGroup.get('task.outputBlock');
   }
 
+  get riseTime() {
+    return this.taskFormGroup.get('params.riseTime');
+  }
+
+  get settlingTime() {
+    return this.taskFormGroup.get('params.settlingTime');
+  }
+
+  get settlingMin() {
+    return this.taskFormGroup.get('params.settlingMin');
+  }
+
+  get settlingMax() {
+    return this.taskFormGroup.get('params.settlingMax');
+  }
+
+  get overshoot() {
+    return this.taskFormGroup.get('params.overshoot');
+  }
+
+  get undershoot() {
+    return this.taskFormGroup.get('params.undershoot');
+  }
+
+  get peak() {
+    return this.taskFormGroup.get('params.peak');
+  }
+
+  get peakTime() {
+    return this.taskFormGroup.get('params.peakTime');
+  }
+
   onFileChanged() {
     const file: File | null = this.selectedFiles.item(0);
     this.fileName = file.name;
@@ -74,6 +116,14 @@ export class TaskFormComponent implements OnInit {
       this.description.value,
       this.inputBlock.value,
       this.outputBlock.value,
+      this.riseTime.value,
+      this.settlingTime.value,
+      this.settlingMax.value,
+      this.settlingMin.value,
+      this.overshoot.value,
+      this.undershoot.value,
+      this.peak.value,
+      this.peakTime.value,
       this.currentFile
     ).subscribe({
       next: (event: any) => {

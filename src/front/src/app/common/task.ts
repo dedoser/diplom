@@ -6,4 +6,12 @@ export class Task {
   description: string;
   inputBlock: string;
   outputBlock: string;
+  riseTime: string;
+  settlingTime: string;
+  settlingMax: string;
+  settlingMin: string;
+  overshoot: string;
+  undershoot: string;
+  peak: string;
+  peakTime: string;
 }

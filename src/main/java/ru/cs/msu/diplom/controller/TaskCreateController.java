@@ -33,6 +33,14 @@ public class TaskCreateController {
                                              @RequestParam("description") String description,
                                              @RequestParam("inputBlock") String inputBlock,
                                              @RequestParam("outputBlock") String outputBLock,
+                                             @RequestParam("riseTime") String riseTime,
+                                             @RequestParam("settlingTime") String settlingTime,
+                                             @RequestParam("settlingMin") String settlingMin,
+                                             @RequestParam("settlingMax") String settlingMax,
+                                             @RequestParam("overshoot") String overshoot,
+                                             @RequestParam("undershoot") String undershoot,
+                                             @RequestParam("peak") String peak,
+                                             @RequestParam("peakTime") String peakTime,
                                              @RequestParam("file") MultipartFile file) {
         log.debug("start saving task");
         try {
@@ -45,6 +53,14 @@ public class TaskCreateController {
             task.setOutputBlock(outputBLock);
             task.setTaskFileLoc(fileDir + file.getOriginalFilename());
             task.setImagesLoc(imageLoc);
+            task.setRiseTime(riseTime);
+            task.setSettlingTime(settlingTime);
+            task.setSettlingMax(settlingMax);
+            task.setSettlingMin(settlingMin);
+            task.setOvershoot(overshoot);
+            task.setUndershoot(undershoot);
+            task.setPeak(peak);
+            task.setPeakTime(peakTime);
             taskRepository.save(task);
             return ResponseEntity.status(HttpStatus.OK).body("Success");
         } catch (Exception e) {
